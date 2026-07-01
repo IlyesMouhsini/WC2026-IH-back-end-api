@@ -118,4 +118,4 @@ La documentation de l'API est alors accessible sur `http://127.0.0.1:8000/api`.
 
 ## Auteur
 
-Ilyès Mouhsini — étudiant BUT Informatique, IUT de Vélizy-Rambouillet (UVSQ)
+Ilyès Mouhsini - étudiant BUT Informatique, IUT de Vélizy-Rambouillet (UVSQ)
