@@ -1,8 +1,8 @@
-# WC26 Pronostics API
+# WC2026 Hub — API
 
-API REST développée avec **Symfony 7** permettant à un groupe d'amis de pronostiquer les scores des matchs de la Coupe du Monde 2026, avec calcul automatique des points une fois les résultats connus.
+API REST développée avec **Symfony 7**, back-end du projet [WC2026 Hub](https://github.com/IlyesMouhsini/WC2026-Intelligence-Hub) : elle centralise les données du tournoi (équipes, rencontres, scores) synchronisées depuis une API externe, et gère la couche communautaire de l'application (comptes utilisateurs, pronostics, classement).
 
-Ce projet est le pendant back-end de [WC2026 Hub](https://github.com/IlyesMouhsini/WC2026-Intelligence-Hub.git), une plateforme de data intelligence sur la Coupe du Monde 2026 construite en SvelteKit. Les deux projets forment un écosystème connecté : WC2026 Hub consomme cette API pour afficher en direct les rencontres et leurs scores, tandis que WC26 Pronostics API gère la logique métier communautaire (comptes utilisateurs, pronostics, classements).
+Ce projet est le pendant back-end de [WC2026 Hub](https://github.com/IlyesMouhsini/WC2026-Intelligence-Hub), une plateforme de data intelligence sur la Coupe du Monde 2026 construite en SvelteKit. Les deux projets forment un écosystème connecté : WC2026 Hub consomme cette API pour afficher en direct les rencontres, leurs scores, et les fonctionnalités communautaires du tournoi.
 
 ## Stack technique
 
@@ -15,10 +15,10 @@ Ce projet est le pendant back-end de [WC2026 Hub](https://github.com/IlyesMouhsi
 
 ## Fonctionnalités
 
-- Gestion des équipes et des rencontres (scores, statut, phase de compétition), synchronisées automatiquement depuis une API externe
-- Système de pronostics : chaque utilisateur pronostique un score pour chaque rencontre
+- Gestion des équipes et des rencontres du tournoi (scores, statut, phase de compétition), synchronisées automatiquement depuis une API externe
+- Comptes utilisateurs et système de pronostics : chaque utilisateur pronostique un score pour chaque rencontre
 - Calcul automatique des points selon la précision du pronostic (score exact, bonne issue, ou aucun point) une fois le résultat réel connu
-- API REST documentée et consommée en direct par le front [WC2026 Hub](https://github.com/IlyesMouhsini/WC2026-Intelligence-Hub.git)
+- API REST documentée, consommée en direct par le front [WC2026 Hub](https://github.com/IlyesMouhsini/WC2026-Intelligence-Hub)
 
 ## Modèle de données
 
@@ -33,16 +33,8 @@ Utilisateur 1 ──── N Pronostic N ──── 1 Rencontre
 |---|---|
 | `Equipe` | Une sélection nationale participant au tournoi |
 | `Rencontre` | Un match entre deux équipes (date, scores, phase) |
-| `Utilisateur` | Un participant du groupe de pronostics |
+| `Utilisateur` | Un participant de la plateforme |
 | `Pronostic` | Le score deviné par un utilisateur pour une rencontre donnée, et les points obtenus |
-
-## Barème de points
-
-| Résultat | Points |
-|---|---|
-| Score exact deviné | 3 |
-| Bonne issue devinée (victoire/nul/défaite), score différent | 1 |
-| Mauvaise issue devinée | 0 |
 
 ## Commandes disponibles
 
@@ -68,15 +60,15 @@ En plus des commandes standard de Symfony/Doctrine, ce projet ajoute :
 ### Étapes
 
 ```bash
-git clone https://github.com/TonPseudo/wc26-pronostics-api.git
-cd wc26-pronostics-api
+git clone https://github.com/TonPseudo/wc2026-hub-api.git
+cd wc2026-hub-api
 composer install
 ```
 
 Configurer la connexion à la base de données dans `.env` :
 
 ```
-DATABASE_URL="mysql://root:@127.0.0.1:3306/pronostics_wc26?serverVersion=8.0&charset=utf8mb4"
+DATABASE_URL="mysql://root:@127.0.0.1:3306/wc2026_hub?serverVersion=8.0&charset=utf8mb4"
 ```
 
 Créer un fichier `.env.local` (non versionné) avec votre clé API football-data.org :
